@@ -1,0 +1,48 @@
+﻿@model Teacher
+@{
+    ViewData["Title"] = "TeacherHomePage";
+}
+<body>
+    <div class="container">
+
+        <div class="page-header">
+            <h2>Welcome Professor</h2>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">ID: </label>
+            <label class="col-sm-2">@Model.teacherid</label>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Name: </label>
+            <label class="col-sm-2">@Model.teachername</label>
+        </div>
+
+        <div class="page-header">
+            <h3>Courses: </h3>
+        </div>
+        <table class="table table-stripedmine">
+            <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Name</th>
+                    <th>Assignments</th>
+                    <th>Students</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Course ite in ViewBag.coursesList)
+                {
+                <tr>
+                    <td>@ite.courseid</td>
+                    <td>@ite.courseName</td>
+                    <td><a asp-controller="Assessment" asp-action="AssessmentList" asp-route-courseid="@ite.courseid">Assignment List</a></td>
+                    <td><a asp-controller="Teacher" asp-action="StuGradeList" asp-route-cid="@ite.courseid">Student List</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+
+</body>

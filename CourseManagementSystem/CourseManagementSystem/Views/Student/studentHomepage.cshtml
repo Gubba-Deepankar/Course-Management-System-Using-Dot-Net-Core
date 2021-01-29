@@ -1,0 +1,50 @@
+﻿@model StudentViewModel
+@{
+    ViewData["Title"] = "studentHomepage";
+}
+<h2>studentHomepage</h2>
+<div class="container">
+
+    <div class="page-header">
+        <p>Welcome Student</p>
+    </div>
+    <div class="row">
+        <label class="col-sm-2">ID: </label>
+        <label class="col-sm-2">@Model.thisStudent.studentID.ToString()</label>
+    </div>
+    <div class="row">
+        <label class="col-sm-2">Name: </label>
+        <label class="col-sm-2">@Model.thisStudent.studentname.ToString()</label>
+    </div>
+    <div class="row">
+        <label class="col-sm-2">Email: </label>
+        <label class="col-sm-2">@Model.thisStudent.emailaddr.ToString();</label>
+    </div>
+    <table class="table-stripedmine table">
+        <thead>
+            <tr>
+                <th>Course Id</th>
+                <th>Course Name</th>
+                <th>Course Faculty</th>
+                <th>Course Grade</th>
+                <th>Assignments List</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CourseViewModel ite in Model.cvm)
+            {
+            <tr>
+                <td>@ite.courseid</td>
+                <td>@ite.courseName</td>
+                <td>@ite.courseFaculty</td>
+                <td>@ite.courseGrade</td>
+                <td><a asp-controller="Student" asp-action="AssessmentStuList" asp-route-id="@ite.courseid" class="navbar-btn">Assessments</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+
+

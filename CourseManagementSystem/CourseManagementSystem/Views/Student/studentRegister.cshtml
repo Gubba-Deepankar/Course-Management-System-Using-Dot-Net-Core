@@ -1,0 +1,109 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Student Registration Page";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h2>Enter following details</h2>
+    </div>
+    <form asp-controller="Student" asp-action="studentRegister" method="post">
+        <div class="form-group">
+            <label class="control-label">Student id: </label>
+            <label class="control-label">@Model.studentID</label>
+            <input asp-for="studentID" type="hidden" value="@Model.studentID" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Student Name</label>
+            <input asp-for="studentname" class="form-control" />
+            <span asp-validation-for="studentname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Email </label>
+            <input asp-for="emailaddr" class="form-control" />
+            <span asp-validation-for="emailaddr" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Major</label>
+            <input asp-for="major" class="form-control" />
+            <span asp-validation-for="major" class="text-danger"></span>
+        </div>
+        <!--
+    <table class="table-striped">
+        <tr>
+            <td>Select a course</td>
+            <td>
+                <select asp-for="courseids1">
+                    @foreach (var ite in ViewBag.CoursesAvailableList)
+                    {
+                        <option value="@ite">@ite</option>
+                    }
+
+                </select>
+            </td>
+
+            <td>Select a course</td>
+            <td>
+                <select asp-for="courseids2">
+                    @foreach (var ite in ViewBag.CoursesAvailableList)
+                    {
+                        <option value="@ite">@ite</option>
+                    }
+
+                </select>
+            </td>
+
+            <td>Select a course</td>
+            <td>
+                <select asp-for="courseids3">
+                    @foreach (var ite in ViewBag.CoursesAvailableList)
+                    {
+                        <option value="@ite">@ite</option>
+                    }
+
+                </select>
+            </td>
+        </tr>
+    </table>
+        -->
+        <span class="text-danger">@ViewBag.ErrCour</span>
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="control-label">select first course</label>
+                <select asp-for="courseids1" class="form-control">
+                    @foreach (Course ite in ViewBag.CoursesAvailableList)
+                    {
+                        <option value="@ite.courseid">@ite.courseName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label">select second course</label>
+                <select asp-for="courseids2" class="form-control">
+                    @foreach (var ite in ViewBag.CoursesAvailableList)
+                    {
+                        <option value="@ite.courseid">@ite.courseName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label">select third course</label>
+                <select asp-for="courseids3" class="form-control">
+                    @foreach (var ite in ViewBag.CoursesAvailableList)
+                    {
+                        <option value="@ite.courseid">@ite.courseName</option>
+                    }
+                </select>
+            </div>
+
+        </div>
+
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Register" />
+        </div>
+    </form>
+</div>
+

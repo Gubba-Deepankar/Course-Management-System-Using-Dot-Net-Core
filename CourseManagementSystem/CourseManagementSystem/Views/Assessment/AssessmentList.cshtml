@@ -1,0 +1,53 @@
+﻿@model List<Assessment>
+@{
+    ViewData["Title"] = "Assessments";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Assessment List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header row">
+            <h5 class="col-sm-2">Teacher: @ViewBag.TeacherName</h5>
+            <h5 class="col-sm-2">Course: @ViewBag.CourseName</h5>
+        </div>
+        <div><a asp-controller="Assessment" asp-action="AddAssessment" style="background-color:firebrick;color:black;font-size:x-large;padding:5px"> + </a> <===Add assessment</div>
+        <br />
+        @{
+            if (ViewBag.asmcount <= 0)
+            {
+                <h6 class="info">No assessments were added.</h6>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Assessment Name</th>
+                            <th>Assessment Max Marks</th>
+                            <th>Course ID</th>
+                            <th>Students List</th>
+                            <th>Delete option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Assessment ite in Model)
+                        {
+                        <tr>
+                            <td>@ite.assessmentName</td>
+                            <td>@ite.assessmentMaxMarks</td>
+                            <td>@ite.courseid</td>
+                            <td><a asp-controller="Assessment" asp-action="StuAssessList" asp-route-reqid="@ite.assessmentName" class="info">Students</a></td>
+                            <td><a asp-controller="Assessment" asp-action="DeleteAssessment" asp-route-daid="@ite.assessmentName" class="info">Delete</a></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@model StudentCourseData
+@{
+    ViewData["Title"] = "Update Grade";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <form asp-controller="Teacher" asp-action="UpdateStuGrade" class="form-group">
+            <div class="form-group">
+                <label>Student ID:</label>
+                <label>@Model.studentID</label>
+                <input type="hidden" value="@Model.studentID" asp-for="studentID" />
+            </div>
+            <div class="form-group">
+                <label>Student ID:</label>
+                <label>@Model.courseID</label>
+                <input type="hidden" value="@Model.courseID" asp-for="courseID" />
+            </div>
+            <div class="form-group">
+                <label>Course Grade:</label>
+                <input type="text" value="@Model.courseGrade" asp-for="courseGrade" />
+                <input type="hidden" value="@Model.stucourseID" asp-for="stucourseID" />
+                <input type="hidden" value="@Model.courseStatus" asp-for="courseStatus" />
+            </div>
+            <div>
+                <input type="submit" value="Update" class="btn-primary" style="background-color:firebrick"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model List<StudentAssignmentData>
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="container">
+        <div class="page-header row">
+            <h5 class="col-sm-2">Teacher: @ViewBag.TeacherName</h5>
+            <h5 class="col-sm-2">Course: @ViewBag.CourseName</h5>
+        </div>
+        <br />
+        @{
+            if (ViewBag.sadcount == 0)
+            {
+                <h4 class="text-danger">Students have not enrolled or late enrollment.</h4>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Assessment</th>
+                            <th>Marks Obtained</th>
+                            <th>Max Marks</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (StudentAssignmentData ite in Model)
+                        {
+                            <tr>
+                                <td>@ite.studentID</td>
+                                <td>@ite.assignmentID</td>
+                                <td>@ite.assignmentMarks</td>
+                                <td>@ite.assignmentMaxmarks</td>
+                                <td><a asp-controller="Assessment" asp-action="UpdateStuMarks" asp-route-stuid="@ite.studentID">Update Student</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+</body>
+</html>

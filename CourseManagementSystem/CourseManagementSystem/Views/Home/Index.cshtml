@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <body>
+        <div class="jumbotron text-center">
+            <div>
+                <h4 class="text-center">Gubba University</h4>
+                <div>
+                    <img src="~/images/Gubba university 2.jpg" class="img-rounded" height="300" width="600"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h3><a asp-area="" asp-controller="Student" asp-action="studentHomepage" class="navbar-btn">Student Corner</a></h3>
+                <br />
+                <a asp-area="" asp-controller="Student" asp-action="studentHomepage"><img src="~/images/student corner.jpg" class="img-rounded" height="300" /></a>
+                
+            </div>
+            <div class="col-sm-6 text-center">
+                <h3><a asp-area="" asp-controller="Teacher" asp-action="TeacherHomePage" class="navbar-btn">Teacher Corner</a></h3>
+                <br />
+                <a asp-area="" asp-controller="Teacher" asp-action="TeacherHomePage"><img src="~/images/teacher corner1.jpg" class="img-rounded" height="300" /></a>
+                
+            </div>
+        </div>
+    </body>

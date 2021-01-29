@@ -1,0 +1,47 @@
+﻿@model List<StudentCourseData>
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    <div class="container">
+        @{
+            if (ViewBag.scdlcount == 0)
+            {
+                <div class="jumbotron">
+                    <h4 class="text-danger">Students have not enrolled yet.</h4>
+                </div>
+            }
+            else
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student Id</th>
+                            <th>Course Id</th>
+                            <th>Course Grade</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ite in Model)
+                        {
+                            <tr>
+                                <td>@ite.studentID</td>
+                                <td>@ite.courseID</td>
+                                <td>@ite.courseGrade</td>
+                                <td class="text-center"><a asp-controller="Teacher" asp-action="UpdateStuGrade" asp-route-stuid="@ite.studentID" class="btn-link" >Update Grade</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿@model Assessment
+@{
+    ViewData["Title"] = "Add Assessment";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="container">
+        <div class="page-header row">
+            <h5 class="col-sm-2">Teacher: @ViewBag.TeacherName</h5>
+            <h5 class="col-sm-2">Course: @ViewBag.CourseName</h5>
+        </div>
+        <form asp-controller="Assessment" asp-action="AddAssessment" method="post" class="form-group">
+            <div class="form-group">
+                <label class="control-label">Assessment Name</label>
+                <input class="form-control" asp-for="assessmentName" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Assessment Max MArks</label>
+                <input class="form-control" asp-for="assessmentMaxMarks" />
+            </div>
+
+            <input class="form-control" asp-for="courseid" value="@Model.courseid" type="hidden" />
+            <input class="form-control" asp-for="teacherid" value="@Model.teacherid" type="hidden" />
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="text-center">
+        <span class="text-danger">@ViewBag.ExistErr</span>
+    </div>
+</body>
+</html>

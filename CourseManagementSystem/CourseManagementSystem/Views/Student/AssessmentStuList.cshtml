@@ -1,0 +1,43 @@
+﻿@model List<StudentAssignmentData>
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="container">
+        <div class="page-header row">
+            <h5 class="col-sm-2">Course: @ViewBag.CourseName</h5>
+            <h5 class="col-sm-2">Teacher: @ViewBag.TeacherName</h5>
+        </div>
+        @{ if (ViewBag.sadlcount == 0)
+            { <div class="jumbotron">
+                 <p class="info">No Assignments were posted. Check back again later</p>
+                 </div>}
+            else
+            { <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Assessment Name</th>
+                            <th>Marks Obtained</th>
+                            <th>Maximum Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ite in Model)
+                        {
+                            <tr>
+                                <td>@ite.assignmentID</td>
+                                <td>@ite.assignmentMarks</td>
+                                <td>@ite.assignmentMaxmarks</td>
+                            </tr>
+                        }
+                    </tbody>
+               </table>}
+        }
+        
+    </div>
+</body>
+</html>

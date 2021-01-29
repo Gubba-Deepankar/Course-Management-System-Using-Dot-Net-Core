@@ -1,0 +1,44 @@
+﻿@model StudentAssignmentData
+@{
+    ViewData["Title"] = "Update Marks";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="container">
+        <br />
+        <form asp-controller="Assessment" asp-action="UpdateStuMarks">
+            <div class="form-group">
+                <label class="control-label">Student Id:</label>
+                <label asp-for="studentID" class="control-label">@Model.studentID</label>
+                <input type="hidden" value="@Model.studentID" asp-for="studentID" />
+                <input type="hidden" value="@Model.stuAssessId" asp-for="stuAssessId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Assessment: </label>
+                <label asp-for="assignmentID" class="control-label">@Model.assignmentID</label>
+                <input type="hidden" value="@Model.assignmentID" asp-for="assignmentID" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Marks obtained: </label>
+                <input asp-for="assignmentMarks" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Max marks: </label>
+                <label asp-for="assignmentMaxmarks" class="control-label">@Model.assignmentMaxmarks</label>
+                <input type="hidden" value="@Model.assignmentMaxmarks" asp-for="assignmentMaxmarks" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Course id: </label>
+                <label asp-for="courseid" class="control-label">@Model.courseid</label>
+                <input type="hidden" value="@Model.courseid" asp-for="courseid" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn-info"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
